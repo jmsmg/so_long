@@ -1,6 +1,6 @@
 
 #ifndef SO_LONG_H
-# include "./mlx/mlx.h"
+# include "./mlx/minilibx-linux/mlx.h"
 
 typedef struct s_coordinate
 {

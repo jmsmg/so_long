@@ -1,32 +1,34 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
-LIBRARY = mlx/libmlx.a # gnl/libgnl.a libft/libft.a ft_printf/libftprintf.a
-EXECUTABLE = so_long
-SOURCE = so_long.c # so_long_utils.c check_map.c parse_map.c queue.c find_path.c image.c key_hooks.c render_map.c
+NAME = so_long
 HEADER = so_long.h
+LIBFT = libft/libft.a
+LIBFT_DIR = libft/
+CLIB = -Lmlx/minilibx_linux -lmlx -framework OpenGL -framework AppKit
+SRCS = so_long.c
+OBJS = $(SRCS:.c=.o)
 
-all: $(EXECUTABLE)
+all:
+	make $(NAME)
 
-$(EXECUTABLE): $(LIBRARY) $(SOURCE) $(HEADER)
-	$(CC) $(CFLAGS) -o $@ $(SOURCE) $(LIBRARY) $(LDFLAGS)
+$(NAME) : $(LIBFT) $(OBJS)
+	cp $(LIBFT) "./"
+	$(CC) $(CFLAGS) $(CLIB) -o $(NAME) $(OBJS) libft.a
 
-$(LIBRARY):
-	$(MAKE) -C mlx
-# $(MAKE) -C gnl
-# $(MAKE) -C libft
-# $(MAKE) -C ft_printf
+$(LIBFT) :
+	make -C $(LIBFT_DIR) all
 
+.c.o:
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 clean:
-	rm -f $(EXECUTABLE)
-
+	make -C $(LIBFT_DIR) clean
+	rm -rf libft.a
+	rm -rf $(OBJS)
 fclean: clean
-	$(MAKE) -C mlx clean
-# $(MAKE) -C gnl clean
-# $(MAKE) -C libft clean
-# $(MAKE) -C ft_printf clean
-	rm -f $(LIBRARY)
-
-re: fclean all
+	make -C $(LIBFT_DIR) fclean
+	rm -rf $(NAME)
+re:
+	make fclean
+	make all
 
 .PHONY: all clean fclean re
