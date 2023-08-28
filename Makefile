@@ -1,44 +1,32 @@
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror
-MLX_DIR = mlx
-FRAME_WORK_FLAGS = -framework Metal -framework Metalkit
-HEADER_FLAGS = -Iincludes
-LDFLAGS = -L./libft -L$(MLX_DIR)
-LIBS = -lft -lmlx
-NAME = so_long
-SRC_DIR = src
+LDFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBRARY = mlx/libmlx.a # gnl/libgnl.a libft/libft.a ft_printf/libftprintf.a
+EXECUTABLE = so_long
+SOURCE = so_long.c # so_long_utils.c check_map.c parse_map.c queue.c find_path.c image.c key_hooks.c render_map.c
+HEADER = so_long.h
 
-ifdef compile_bonus
-	MAIN = main_bonus
-else
-	MAIN = main
-endif
+all: $(EXECUTABLE)
 
-SRCS =
+$(EXECUTABLE): $(LIBRARY) $(SOURCE) $(HEADER)
+	$(CC) $(CFLAGS) -o $@ $(SOURCE) $(LIBRARY) $(LDFLAGS)
 
-OBJS = $(SRCS:.c=.o) $(SRC_DIR)/$(MAIN).o
+$(LIBRARY):
+	$(MAKE) -C mlx
+# $(MAKE) -C gnl
+# $(MAKE) -C libft
+# $(MAKE) -C ft_printf
 
-LIBFT = libft/libft.a
-
-all: $(NAME)
-
-bonus:
-	make compile_bonus=1 all
-
-$(NAME): $(OBJS) $(LIBFT) mlx/libmlx.dylib
-	$(CC) $(OBJS) $(LDFLAGS) $(LIBS) $(FRAME_WORK_FLAGS) -o $@
-	-install_name_tool -change libmlx.dylib ./$(MLX_DIR)/libmlx.dylib $(NAME)
-$(LIBFT):
-	cd libft && (make)
-mlx/libmlx.dylib:
-	cd mlx; make
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_DIR) $(HEADER_FLAGS) -c $< -o $@
 clean:
-	rm -f $(OBJS) $(SRC_DIR)/main_bonus.o $(SRC_DIR)/main.o && cd libft && make clean
+	rm -f $(EXECUTABLE)
+
 fclean: clean
-	rm -f $(NAME); cd libft; make fclean; cd ..; cd mlx; make clean
+	$(MAKE) -C mlx clean
+# $(MAKE) -C gnl clean
+# $(MAKE) -C libft clean
+# $(MAKE) -C ft_printf clean
+	rm -f $(LIBRARY)
+
 re: fclean all
 
 .PHONY: all clean fclean re
