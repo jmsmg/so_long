@@ -4,7 +4,7 @@ NAME = so_long
 HEADER = so_long.h
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-CLIB = -Lmlx/minilibx_linux -lmlx -framework OpenGL -framework AppKit
+CLIB = -L./mlx/minilibx-linux -lmlx -framework OpenGL -framework AppKit
 SRCS = so_long.c
 OBJS = $(SRCS:.c=.o)
 
