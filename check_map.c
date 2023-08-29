@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:48:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/29 20:13:37 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/30 08:18:06 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,28 @@ int	ft_check_rectangle(t_info *info)
 	{
 		if (i < info->width && (info->map)[i] != '1')
 		{
-			ft_error(RECTANGLE_FAIL);
+			return (FALSE);
 		}
-		else if (i != 0 && (info->width % i == 0 || info->width % i == 1)
+		else if ((i % info->width == 0 || i % info->width == info->width - 1)
 			&& (info->map)[i] != '1')
 		{
-			ft_error(RECTANGLE_FAIL);
+			return (FALSE);
 		}
-		else if (info->width * info->length <= i && (info->map)[i] != '1')
+		else if (info->width * (info->length - 1) <= i
+			&& (info->map)[i] != '1')
 		{
-			ft_error(RECTANGLE_FAIL);
+			return (FALSE);
 		}
-		exit(0);
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
 
 int	ft_check_map(t_info *info)
 {
-	if (ft_check_rectangle(info))
+	if (!ft_check_rectangle(info))
 	{
-		exit(0);
+		ft_error(RECTANGLE_FAIL);
 	}
 	return (1);
 }

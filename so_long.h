@@ -1,5 +1,6 @@
 
 #ifndef SO_LONG_H
+# define SO_LONG_H
 # include "./mlx/minilibx-linux/mlx.h"
 # include "libft.h"
 # include <stdlib.h>
@@ -8,7 +9,8 @@
 
 # include <stdio.h>
 
-# define SO_LONG_H
+# define TRUE 1
+# define FALSE 0
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_S 1
