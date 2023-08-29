@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/29 17:40:19 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:16:23 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	ft_error(int flag)
 {
 	if (flag == MALLOC_FAIL)
 		write(1, "malloc fail error\n", 18);
+	else if (flag == RECTANGLE_FAIL)
+	{
+		write(1, "Map must be rectangular.\n", 25);
+	}
+
 	exit(1);
 }
 

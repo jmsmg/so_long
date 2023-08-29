@@ -6,12 +6,11 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:19:31 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/29 17:56:07 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:31:12 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	ft_check_file_format(int argc, char *map_name)
 {
@@ -27,9 +26,9 @@ int	ft_check_file_format(int argc, char *map_name)
 		return (1);
 	}
 	if (!(map_name[size - 1] == 'r'
-		&& map_name[size - 2] == 'e'
-		&& map_name[size - 3] == 'b'
-		&& map_name[size - 4] == '.'))
+			&& map_name[size - 2] == 'e'
+			&& map_name[size - 3] == 'b'
+			&& map_name[size - 4] == '.'))
 	{
 		return (1);
 	}
@@ -43,8 +42,6 @@ int	ft_check_validation(int argc, char **argv, t_info *info)
 		return (1);
 	}
 	ft_get_map(argv[1], info);
-	if (ft_check_map(info))
-	{
-
-	}
+	ft_check_map(info); // 안됨
+	return (0);
 }
