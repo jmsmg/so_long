@@ -6,12 +6,19 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/29 13:36:31 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:40:19 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-/*
+
+int	ft_error(int flag)
+{
+	if (flag == MALLOC_FAIL)
+		write(1, "malloc fail error\n", 18);
+	exit(1);
+}
+
 int	deal_key(int key, t_coordinate *coordinate)
 {
 	if (key == KEY_W)
@@ -34,46 +41,35 @@ int	deal_key(int key, t_coordinate *coordinate)
 	{
 		exit(0);
 	}
-	else
-	{
-		return (0);
-	}
+	return (0);
 }
-*/
-int	main(void)
+
+void	init_coordinate(t_coordinate	*coordinate)
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void *img;
-	void *img2;
-	void *img3;
-	void *img4;
-	void *img5;
-	int img_width;
-	int img_height;
+	coordinate->x = 3;
+	coordinate->y = 4;
+}
+
+int	main(int argc, char *argv[])
+{
+	t_info			*info;
 	// t_coordinate	*coordinate;
 
-	mlx_ptr = mlx_init();
-	if (!mlx_ptr)
+	info = malloc(sizeof(t_info));
+	if (!info)
+		ft_error(MALLOC_FAIL);
+	if (ft_check_validation(argc, argv, info))
 		return (1);
+	// init_coordinate(coordinate);
+	info->mlx_ptr = mlx_init();
+	if (!(info->mlx_ptr))
+		return (1);
+	info->win_ptr = mlx_new_window(info->mlx_ptr, 500, 500, "so_long");
+	// mlx_hook(info->win_ptr, deal_key, 0, &deal_key, coordinate);
+	// img = mlx_xpm_file_to_image(info->mlx_ptr, "./img/space.xpm", &(info->img_width), &(info->img_height));
+	// mlx_put_image_to_window(mlx_ptr, win_ptr, img, 0, 0);
 
-	// coordinate->x = 3;
-	// coordinate->y = 4;
 
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "so_long");
-	img = mlx_xpm_file_to_image(mlx_ptr, "./img/space.xpm", &img_width, &img_height);
-	img2 = mlx_xpm_file_to_image(mlx_ptr, "./img/wall.xpm", &img_width, &img_height);
-	img3 = mlx_xpm_file_to_image(mlx_ptr, "./img/char.xpm", &img_width, &img_height);
-	img4 = mlx_xpm_file_to_image(mlx_ptr, "./img/player.xpm", &img_width, &img_height);
-	img5 = mlx_xpm_file_to_image(mlx_ptr, "./img/exit.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img, 0, 0);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img2, 0, 64);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img3, 64, 0);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img4, 64, 64);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img5, 128, 64);
-
-	// mlx_hook(win_ptr, deal_key, 0, &deal_key, coordinate);
-
-	mlx_loop(mlx_ptr);
+	// mlx_loop(info->mlx_ptr);
 	return (0);
 }

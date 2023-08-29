@@ -1,34 +1,29 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 NAME = so_long
-HEADER = so_long.h
-LIBFT = libft/libft.a
-LIBFT_DIR = libft/
-CLIB = -L./mlx/minilibx-linux -lmlx -framework OpenGL -framework AppKit
-SRCS = so_long.c
 OBJS = $(SRCS:.c=.o)
+LIBFT_PATH = libft
+MLX = -L./mlx/minilibx-linux -lmlx -framework OpenGL -framework AppKit
+SRCS = so_long.c check_validation.c get_info.c \
+	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 
-all:
-	make $(NAME)
+%.o: %.c
+	$(CC) $(CFLAGS) -I $(LIBFT_PATH) -o $@ -c $<
 
-$(NAME) : $(LIBFT) $(OBJS)
-	cp $(LIBFT) "./"
-	$(CC) $(CFLAGS) $(CLIB) -o $(NAME) $(OBJS) libft.a
+$(NAME): $(OBJS)
+	cd libft && make
+	$(CC) $(CFLAGS) $(MLX) $(OBJS) $(LIBFT_PATH)/libft.a -o $(NAME)
 
-$(LIBFT) :
-	make -C $(LIBFT_DIR) all
+all : $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
-clean:
-	make -C $(LIBFT_DIR) clean
-	rm -rf libft.a
-	rm -rf $(OBJS)
-fclean: clean
-	make -C $(LIBFT_DIR) fclean
-	rm -rf $(NAME)
-re:
-	make fclean
-	make all
+clean :
+	cd libft && make clean
+	rm -f $(OBJS)
 
-.PHONY: all clean fclean re
+fclean : clean
+	cd libft && make fclean
+	rm -f $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re

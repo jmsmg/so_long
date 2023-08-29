@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 16:51:26 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/03/21 17:29:37 by seonggoc         ###   ########.fr       */
+/*   Created: 2023/08/29 16:21:17 by seonggoc          #+#    #+#             */
+/*   Updated: 2023/08/29 17:37:24 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+#include "so_long.h"
+
+void	ft_get_map(char *file, t_info *info)
 {
-	size_t	i;
-	size_t	size;
-	char	*tmp;
+	int		fd;
+	char	*line;
 
-	size = ft_strlen(s1) + ft_strlen(s2);
-	tmp = (char *)malloc(size + 1);
-	if (!tmp)
+	fd = open(file, O_RDONLY);
+	line = get_next_line(fd);
+	if (!line)
+		ft_error(MALLOC_FAIL);
+	info->map = ft_strdup(line);
+	if (!(info->map))
+		ft_error(MALLOC_FAIL);
+	while(line)
 	{
-		return (0);
+		free(line);
+		line = NULL;
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		info->map = ft_strjoin(info->map, line);
 	}
-	tmp[0] = 0;
-	ft_strlcat(tmp, s1, size + 1);
-	i = ft_strlen(s1);
-	ft_strlcat(&tmp[i], s2, size + 1);
-	return (tmp);
 }
