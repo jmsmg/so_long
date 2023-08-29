@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/24 12:01:06 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:36:31 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int	main(void)
 	img4 = mlx_xpm_file_to_image(mlx_ptr, "./img/player.xpm", &img_width, &img_height);
 	img5 = mlx_xpm_file_to_image(mlx_ptr, "./img/exit.xpm", &img_width, &img_height);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img, 0, 0);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img2, 64, 0);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img3, 128, 0);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img4, 192, 64);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img5, 0, 64);
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img2, 0, 64);
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img3, 64, 0);
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img4, 64, 64);
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img5, 128, 64);
 
 	// mlx_hook(win_ptr, deal_key, 0, &deal_key, coordinate);
 
