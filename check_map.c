@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:48:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/30 10:37:27 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:20:44 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_check_vali_char(char c)
 {
-	if (c != '0' || c != '1' || c != 'C' || c != 'E' || c != 'P')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
 	{
 		return (TRUE);
 	}
@@ -24,27 +24,27 @@ int	ft_check_vali_char(char c)
 void	ft_check_char(t_info *info)
 {
 	int			i;
-	t_char_cnt	*char_cnt;
+	t_char_cnt	char_cnt;
 
 	i = 0;
-	*char_cnt = (t_char_cnt){.c = 0, .e = 0, .p = 0};
+	char_cnt = (t_char_cnt){.c = 0, .e = 0, .p = 0};
 	while ((info->map)[i])
 	{
-		if (ft_check_vali_char((info->map)[i]))
+		if (!ft_check_vali_char((info->map)[i]))
 			ft_error(CHAR_ERR);
 		if (info->map[i] == 'C')
-			char_cnt->c += 1;
+			char_cnt.c += 1;
 		else if (info->map[i] == 'E')
-			char_cnt->e += 1;
+			char_cnt.e += 1;
 		else if (info->map[i] == 'P')
-			char_cnt->p += 1;
+			char_cnt.p += 1;
 		i++;
 	}
-	if (char_cnt->p != 1)
+	if (char_cnt.p != 1)
 		ft_error(PLAYER_ERR);
-	else if (char_cnt->e != 1)
+	else if (char_cnt.e != 1)
 		ft_error(EXIT_ERR);
-	else if (char_cnt->c < 1)
+	else if (char_cnt.c < 1)
 		ft_error(COLLECT_ERR);
 }
 
@@ -74,21 +74,20 @@ int	ft_check_wall(t_info *info)
 	return (TRUE);
 }
 
-int	ft_check_wall(t_info *info)
+int	ft_check_rectangle(t_info *info)
 {
-	if (info->width * info->length != ft_strlen(info->map))
+	if (info->width * info->length != (int)ft_strlen(info->map))
 	{
 		return (FALSE);
 	}
 	return (TRUE);
 }
 
-int	ft_check_map(t_info *info)
+void	ft_check_map(t_info *info)
 {
 	if (!ft_check_rectangle(info))
 		ft_error(RECTAGLE_ERR);
 	if (!ft_check_wall(info))
 		ft_error(WALL_FAIL);
 	ft_check_char(info);
-	return (1);
 }

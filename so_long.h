@@ -43,13 +43,19 @@ typedef struct s_char_cnt
 
 typedef struct s_info
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
 	char	*map;
 	int		width;
 	int		length;
-	int		img_width;
-	int		img_height;
+	void	*mlx;
+	void	*win;
+	int		img_wid;
+	int		img_len;
+	void	*space;
+	void	*wall;
+	void	*collect;
+	void	*exit;
+	void	*player;
+	int		move;
 }	t_info;
 
 int	ft_error(int flag);
@@ -61,6 +67,8 @@ void	ft_get_map(char *file, t_info *info);
 char	*get_next_line(int fd);
 char	*ft_delete_newline(char *tmp, t_info *info);
 
-int	ft_check_wall(t_info *info);
-int	ft_check_map(t_info *info);
+void	ft_check_map(t_info *info);
+int		ft_check_wall(t_info *info);
+
+void	ft_init_map(t_info *info);
 #endif
