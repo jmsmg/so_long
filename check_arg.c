@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_validation.c                                 :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:19:31 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/29 19:31:12 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:03:42 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_file_format(int argc, char *map_name)
+int	ft_check_file_format(char *map_name)
 {
 	int	size;
 
-	if (argc != 2)
-	{
-		return (1);
-	}
 	size = ft_strlen(map_name);
-	if (size <= 5)
+	if (size < 5)
 	{
 		return (1);
 	}
@@ -35,13 +31,10 @@ int	ft_check_file_format(int argc, char *map_name)
 	return (0);
 }
 
-int	ft_check_validation(int argc, char **argv, t_info *info)
+void	ft_check_arg(int argc, char **argv)
 {
-	if (ft_check_file_format(argc, argv[1]))
-	{
-		return (1);
-	}
-	ft_get_map(argv[1], info);
-	ft_check_map(info); // 안됨
-	return (0);
+	if (argc != 2)
+		ft_error(INCORRECT_ARGC);
+	if (ft_check_file_format(argv[1]))
+		ft_error(FILE_FORMAT_ERROR);
 }
