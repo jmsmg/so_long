@@ -6,7 +6,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-
+# include <math.h>
 # include <stdio.h>
 
 # define TRUE 1
@@ -71,4 +71,7 @@ void	ft_check_map(t_info *info);
 int		ft_check_wall(t_info *info);
 
 void	ft_set_info(t_info *info);
+
+void	ft_draw_map(t_info *info, void *mlx, void *win);
+void	ft_get_img_ptr(t_info *info, void *mlx, int *img_w, int *img_l);
 #endif

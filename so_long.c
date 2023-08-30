@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/30 12:54:50 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:23:42 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ int	main(int argc, char *argv[])
 	ft_get_map(argv[1], info);
 	ft_check_map(info);
 	ft_set_info(info);
+	ft_draw_map(info, info->mlx, info->win);
+	mlx_loop(info->mlx);
 	return (0);
 }
