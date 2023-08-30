@@ -70,5 +70,5 @@ char	*ft_delete_newline(char *tmp, t_info *info);
 void	ft_check_map(t_info *info);
 int		ft_check_wall(t_info *info);
 
-void	ft_init_map(t_info *info);
+void	ft_set_info(t_info *info);
 #endif

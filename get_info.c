@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:21:17 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/30 09:58:56 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:54:40 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,19 @@ char	*ft_delete_newline(char *tmp, t_info *info)
 			nl++;
 		size++;
 	}
-	info->map = (char *)malloc((sizeof(char) * (size - nl) + 1));
+	info->map = (char *)malloc((info->length * info->width) + 1);
 	if (!info->map)
 		ft_error(MALLOC_FAIL);
 	nl = 0;
-	while (i < size)
+	while (i < info->length * info->width)
 	{
 		if (tmp[i + nl] == '\n')
 			nl++;
 		(info->map)[i] = tmp[i + nl];
 		i++;
 	}
+	(info->map)[i] = '\0';
+	free(tmp);
 	return (info->map);
 }
 

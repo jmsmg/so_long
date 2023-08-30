@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/30 11:06:53 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:54:50 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,6 @@ int	main(int argc, char *argv[])
 	ft_check_arg(argc, argv);
 	ft_get_map(argv[1], info);
 	ft_check_map(info);
-	ft_init_map(info);
-		info->mlx_ptr = mlx_init();
-		if (!(info->mlx_ptr))
-			return (1);
-		info->win_ptr = mlx_new_window(info->mlx_ptr, 500, 500, "so_long");
-		// mlx_hook(info->win_ptr, deal_key, 0, &deal_key, coordinate);
-		// img = mlx_xpm_file_to_image(info->mlx_ptr, "./img/space.xpm", &(info->img_width), &(info->img_height));
-		// mlx_put_image_to_window(mlx_ptr, win_ptr, img, 0, 0);
-
-
-	// mlx_loop(info->mlx_ptr);
+	ft_set_info(info);
 	return (0);
 }
