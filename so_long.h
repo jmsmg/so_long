@@ -26,12 +26,8 @@
 # define PLAYER_ERR 7
 # define EXIT_ERR 8
 # define COLLECT_ERR 9
+# define OPEN_FAIL 10
 
-typedef struct s_coordinate
-{
-	int	x;
-	int	y;
-}	t_coordinate;
 
 typedef struct s_char_cnt
 {
@@ -46,6 +42,10 @@ typedef struct s_info
 	char	*map;
 	int		width;
 	int		length;
+	int		x;
+	int		y;
+	int		c_cnt;
+	int		e_cnt;
 	void	*mlx;
 	void	*win;
 	int		img_wid;
@@ -65,7 +65,7 @@ int		ft_check_file_format(char *map_name);
 
 void	ft_get_map(char *file, t_info *info);
 char	*get_next_line(int fd);
-char	*ft_delete_newline(char *tmp, t_info *info);
+char	*ft_delete_newline(char *tmp, int i, int nl, t_info *info);
 
 void	ft_check_map(t_info *info);
 int		ft_check_wall(t_info *info);
