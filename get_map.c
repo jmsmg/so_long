@@ -6,20 +6,16 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:21:17 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/30 17:00:42 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/08/31 21:26:15 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_delete_newline(char *tmp, t_info *info)
+char	*ft_delete_newline(char *tmp, int i, int nl, t_info *info)
 {
-	int	i;
 	int	size;
-	int	nl;
 
-	i = 0;
-	nl = 0;
 	size = 0;
 	while (tmp[size])
 	{
@@ -27,11 +23,12 @@ char	*ft_delete_newline(char *tmp, t_info *info)
 			nl++;
 		size++;
 	}
-	info->map = (char *)malloc((info->length * info->width) + 1);
+	info->map = (char *)malloc((size - nl) + 1);
 	if (!info->map)
 		ft_error(MALLOC_FAIL);
+	size = size - nl;
 	nl = 0;
-	while (i < info->length * info->width)
+	while (i < size)
 	{
 		if (tmp[i + nl] == '\n')
 			nl++;
@@ -52,7 +49,7 @@ void	ft_get_map(char *file, t_info *info)
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
-		ft_error(MALLOC_FAIL);
+		ft_error(OPEN_FAIL);
 	tmp = ft_strdup(line);
 	info->width = ft_strlen(line) - 1;
 	info->length = 1;
@@ -68,5 +65,5 @@ void	ft_get_map(char *file, t_info *info)
 		tmp = ft_strjoin(tmp, line);
 		info->length += 1;
 	}
-	info->map = ft_delete_newline(tmp, info);
+	info->map = ft_delete_newline(tmp, 0, 0, info);
 }
