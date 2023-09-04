@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/04 15:26:19 by seonggoc          #+#    #+#             */
+/*   Updated: 2023/09/04 15:26:42 by seonggoc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -7,7 +18,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -30,14 +40,12 @@
 # define OPEN_FAIL 10
 # define ROUTE_ERR 11
 
-
 typedef struct s_char_cnt
 {
 	int	c;
 	int	e;
 	int	p;
 }	t_char_cnt;
-
 
 typedef struct s_info
 {
@@ -60,7 +68,7 @@ typedef struct s_info
 	int		move;
 }	t_info;
 
-int	ft_error(int flag);
+int		ft_error(int flag);
 
 void	ft_check_arg(int argc, char **argv);
 int		ft_check_file_format(char *map_name);

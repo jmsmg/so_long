@@ -6,13 +6,13 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:19:06 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 15:22:57 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:25:53 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int close_game(void)
+int	close_game(void)
 {
 	exit(0);
 	return (0);

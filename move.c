@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 11:44:03 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 15:02:23 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:25:43 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	ft_move_w(t_info *info, char *map, int x, int y)
 
 void	ft_move_s(t_info *info, char *map, int x, int y)
 {
-	int p;
-	int target;
+	int	p;
+	int	target;
 
 	p = x + (y * info->width);
 	target = x + ((y + 1) * info->width);
@@ -58,7 +58,7 @@ void	ft_move_d(t_info *info, char *map, int x, int y)
 	int	target;
 
 	p = x + (y * info->width);
-	target = x + (y * info->width)+ 1;
+	target = x + (y * info->width) + 1;
 	if (map[target] == '1' || (map[target] == 'E' && info->c_cnt != 0))
 		return ;
 	else if (map[target] == 'E' && info->c_cnt == 0)

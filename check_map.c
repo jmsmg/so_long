@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:48:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 11:08:06 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:25:24 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ft_check_wall(t_info *info)
 
 void	ft_check_map(t_info *info)
 {
-	char	*map;
+	char		*map;
 	t_char_cnt	char_cnt;
 
 	char_cnt = (t_char_cnt){.c = 0, .e = 0, .p = 0};
