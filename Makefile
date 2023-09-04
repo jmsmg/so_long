@@ -5,7 +5,7 @@ OBJS = $(SRCS:.c=.o)
 LIBFT_PATH = libft
 MLX = -L./mlx/minilibx-linux -lmlx -framework OpenGL -framework AppKit
 SRCS = so_long.c check_arg.c get_map.c check_map.c set_info.c play_game.c \
-	./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
+	move.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(LIBFT_PATH) -o $@ -c $<
