@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 11:44:03 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 14:46:37 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:02:23 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ void	ft_move_w(t_info *info, char *map, int x, int y)
 	p = x + y * info->width;
 	target = x + (y - 1) * info->width;
 	if (map[target] == '1' || (map[target] == 'E' && info->c_cnt != 0))
-	{
 		return ;
-	}
+	else if (map[target] == 'E' && info->c_cnt == 0)
+		exit(0);
 	if (map[target] == 'C')
-	{
 		info->c_cnt--;
-	}
 	info->y--;
 	info->map[target] = 'P';
 	info->map[p] = '0';
@@ -42,13 +40,11 @@ void	ft_move_s(t_info *info, char *map, int x, int y)
 	p = x + (y * info->width);
 	target = x + ((y + 1) * info->width);
 	if (map[target] == '1' || (map[target] == 'E' && info->c_cnt != 0))
-	{
 		return ;
-	}
+	else if (map[target] == 'E' && info->c_cnt == 0)
+		exit(0);
 	if (map[target] == 'C')
-	{
 		info->c_cnt--;
-	}
 	info->y++;
 	info->map[target] = 'P';
 	info->map[p] = '0';
@@ -64,13 +60,11 @@ void	ft_move_d(t_info *info, char *map, int x, int y)
 	p = x + (y * info->width);
 	target = x + (y * info->width)+ 1;
 	if (map[target] == '1' || (map[target] == 'E' && info->c_cnt != 0))
-	{
 		return ;
-	}
+	else if (map[target] == 'E' && info->c_cnt == 0)
+		exit(0);
 	if (map[target] == 'C')
-	{
 		info->c_cnt--;
-	}
 	info->x++;
 	info->map[target] = 'P';
 	info->map[p] = '0';
@@ -86,13 +80,11 @@ void	ft_move_a(t_info *info, char *map, int x, int y)
 	p = x + (y * info->width);
 	target = x + (y * info->width) - 1;
 	if (map[target] == '1' || (map[target] == 'E' && info->c_cnt != 0))
-	{
 		return ;
-	}
+	else if (map[target] == 'E' && info->c_cnt == 0)
+		exit(0);
 	if (map[target] == 'C')
-	{
 		info->c_cnt--;
-	}
 	info->x--;
 	info->map[target] = 'P';
 	info->map[p] = '0';
