@@ -4,6 +4,8 @@
 		"stdio.h": "c",
 		"mlx.h": "c",
 		"__string": "c",
-		"ios": "c"
+		"ios": "c",
+		"fcntl.h": "c",
+		"stdlib.h": "c"
 	}
 }

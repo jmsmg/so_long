@@ -73,8 +73,6 @@ int		ft_check_wall(t_info *info);
 
 void	ft_set_info(t_info *info);
 
-
-
 void	ft_play_game(t_info *info);
 void	ft_draw_map(t_info *info, void *mlx, void *win);
 void	ft_get_img_ptr(t_info *info, void *mlx, int *img_w, int *img_l);

@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 11:30:25 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:48:31 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,6 @@ int	ft_error(int flag)
 	exit(1);
 }
 
-int	deal_key(int key, t_info *info)
-{
-	if (key == KEY_W)
-	{
-		info->y += 1;
-	}
-	else if (key == KEY_S)
-	{
-		info->y -= 1;
-	}
-	else if (key == KEY_A)
-	{
-		info->x -= 1;
-	}
-	else if (key == KEY_D)
-	{
-		info->x += 1;
-	}
-	else if (key == KEY_ESC)
-	{
-		exit(0);
-	}
-	ft_printf("%d\n", ++info->move);
-	return (0);
-}
-
 int	main(int argc, char *argv[])
 {
 	t_info			*info;
@@ -77,7 +51,5 @@ int	main(int argc, char *argv[])
 	ft_check_map(info);
 	ft_set_info(info);
 	ft_play_game(info);
-	mlx_key_hook(info->win, &deal_key, info);
-	mlx_loop(info->mlx);
 	return (0);
 }
