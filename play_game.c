@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   play_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:19:06 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/30 18:04:58 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:28:29 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,9 @@ void	ft_draw_map(t_info *info, void *mlx, void *win)
 		}
 		y++;
 	}
+}
+
+void	ft_play_game(t_info *info)
+{
+	ft_draw_map(info, info->mlx, info->win);
 }

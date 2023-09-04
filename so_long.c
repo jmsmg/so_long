@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:46:46 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/31 20:44:59 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:30:25 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,35 +34,36 @@ int	ft_error(int flag)
 		write(1, "Error\nexit error\n", 17);
 	else if (flag == COLLECT_ERR)
 		write(1, "Error\ncollect error\n", 20);
+	else if (flag == ROUTE_ERR)
+		write(1, "Error\nroute error\n", 18);
 	exit(1);
 }
 
-/*
-int	deal_key(int key, t_coordinate *coordinate)
+int	deal_key(int key, t_info *info)
 {
 	if (key == KEY_W)
 	{
-		coordinate->y += 1;
+		info->y += 1;
 	}
 	else if (key == KEY_S)
 	{
-		coordinate->y -= 1;
+		info->y -= 1;
 	}
 	else if (key == KEY_A)
 	{
-		coordinate->x -= 1;
+		info->x -= 1;
 	}
 	else if (key == KEY_D)
 	{
-		coordinate->x += 1;
+		info->x += 1;
 	}
 	else if (key == KEY_ESC)
 	{
 		exit(0);
 	}
+	ft_printf("%d\n", ++info->move);
 	return (0);
 }
-*/
 
 int	main(int argc, char *argv[])
 {
@@ -75,8 +76,8 @@ int	main(int argc, char *argv[])
 	ft_get_map(argv[1], info);
 	ft_check_map(info);
 	ft_set_info(info);
-	ft_draw_map(info, info->mlx, info->win);
-	// mlx_key_hook(info->win, &deal_key, info);
-	// mlx_loop(info->mlx);
+	ft_play_game(info);
+	mlx_key_hook(info->win, &deal_key, info);
+	mlx_loop(info->mlx);
 	return (0);
 }

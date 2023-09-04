@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:48:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/08/31 22:11:48 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:08:06 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,6 @@ void	ft_check_map(t_info *info)
 	ft_find_player(info);
 	ft_find_route(info->x, info->y, map, info);
 	if (info->c_cnt != char_cnt.c || info->e_cnt != char_cnt.e)
-		ft_error(COLLECT_ERR);
+		ft_error(ROUTE_ERR);
 	free(map);
 }

@@ -3,10 +3,10 @@
 # define SO_LONG_H
 # include "./mlx/minilibx-linux/mlx.h"
 # include "libft.h"
+# include "ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <math.h>
 # include <stdio.h>
 
 # define TRUE 1
@@ -27,6 +27,7 @@
 # define EXIT_ERR 8
 # define COLLECT_ERR 9
 # define OPEN_FAIL 10
+# define ROUTE_ERR 11
 
 
 typedef struct s_char_cnt
@@ -72,6 +73,9 @@ int		ft_check_wall(t_info *info);
 
 void	ft_set_info(t_info *info);
 
+
+
+void	ft_play_game(t_info *info);
 void	ft_draw_map(t_info *info, void *mlx, void *win);
 void	ft_get_img_ptr(t_info *info, void *mlx, int *img_w, int *img_l);
 #endif
