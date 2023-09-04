@@ -16,7 +16,7 @@
 # define KEY_S 1
 # define KEY_A 0
 # define KEY_D 2
-# define KEY_X 17
+# define BUTTON_X 17
 
 # define MALLOC_FAIL 1
 # define RECTAGLE_ERR 2

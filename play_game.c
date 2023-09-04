@@ -6,11 +6,17 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:19:06 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 14:58:31 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:22:57 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int close_game(void)
+{
+	exit(0);
+	return (0);
+}
 
 int	deal_key(int key, t_info *info)
 {
@@ -23,9 +29,7 @@ int	deal_key(int key, t_info *info)
 	else if (key == KEY_D)
 		ft_move_d(info, info->map, info->x, info->y);
 	else if (key == KEY_ESC)
-		exit(0);
-	else if (key == KEY_X)
-		exit(0);
+		close_game();
 	return (0);
 }
 
@@ -62,5 +66,6 @@ void	ft_play_game(t_info *info)
 {
 	ft_draw_map(info, info->mlx, info->win);
 	mlx_key_hook(info->win, &deal_key, info);
+	mlx_hook(info->win, BUTTON_X, 0, &close_game, info);
 	mlx_loop(info->mlx);
 }
