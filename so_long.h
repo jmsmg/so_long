@@ -6,13 +6,13 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 15:26:19 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 15:26:42 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:18:45 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "./mlx/minilibx-linux/mlx.h"
+# include "./mlx/mlx.h"
 # include "libft.h"
 # include "ft_printf/ft_printf.h"
 # include <stdlib.h>
