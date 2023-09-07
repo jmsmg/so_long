@@ -6,7 +6,7 @@
 /*   By: seonggoc <seonggoc@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:48:07 by seonggoc          #+#    #+#             */
-/*   Updated: 2023/09/04 15:25:24 by seonggoc         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:11:56 by seonggoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ void	ft_find_route(int x, int y, char *map, t_info *info)
 		info->c_cnt++;
 	if (map[x + (y * info->width)] == '1' || map[x + (y * info->width)] == 'V'
 		|| map[x + (y * info->width)] == 'E')
+	{
+		if (map[x + (y * info->width)] == 'E')
+		{
+			map[x + (y * info->width)] = 'V';
+		}
 		return ;
+	}
 	map[x + (y * info->width)] = 'V';
 	ft_find_route(x - 1, y, map, info);
 	ft_find_route(x, y - 1, map, info);
